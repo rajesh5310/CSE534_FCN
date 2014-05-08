@@ -1,0 +1,38 @@
+# This is a simple ns script. Comments start with #.
+set ns [new Simulator]                  
+source tb_compat.tcl
+
+set nodeA [$ns node]
+set nodeB [$ns node]
+set nodeC [$ns node]
+set nodeD [$ns node]
+set nodeE [$ns node]
+
+#tb-set-ip $nodeA 10.0.0.1
+
+set link0 [$ns duplex-link $nodeA $nodeB 30Mb 50ms DropTail]
+tb-set-link-loss $link0 0.01
+tb-set-ip-link $nodeB $link0 10.0.0.2
+tb-set-ip-link $nodeA $link0 10.0.0.1
+
+set link1 [$ns duplex-link $nodeC $nodeE 100Mb 0ms DropTail]
+tb-set-ip-link $nodeC $link1 192.168.0.1
+
+set link2 [$ns duplex-link $nodeD $nodeE 100Mb 0ms DropTail]
+tb-set-ip-link $nodeD $link2 192.168.0.2
+
+set link3 [$ns duplex-link $nodeB $nodeE 100Mb 0ms DropTail]
+tb-set-ip-link $nodeB $link3 192.168.0.3
+
+tb-set-node-routable-ip $nodeE 0
+
+# Set the OS on a couple.
+tb-set-node-os $nodeA FBSD-STD
+tb-set-node-os $nodeB FBSD-STD
+tb-set-node-os $nodeC FBSD-STD
+tb-set-node-os $nodeD FBSD-STD
+tb-set-node-os $nodeE UBUNTU10-STD         
+
+$ns rtproto Static
+$ns run    
+

@@ -1,0 +1,19 @@
+app-delays-trace_1000.txt
+total cache hits =  39205 
+total hop counts = 239534
+app-delays-trace_50.txt
+total cache hits =  12448 
+total hop counts = 348302
+app-delays-trace_500.txt
+total cache hits =  34098 
+total hop counts = 276790
+app-delays-trace_2000.txt
+total cache hits =  40137 
+total hop counts = 205686
+app-delays-trace_100.txt
+total cache hits =  17765 
+total hop counts = 334722
+app-delays-trace_no_cache.txt
+total cache hits =  0 
+total hop counts = 368402
+
